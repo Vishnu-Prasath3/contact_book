@@ -21,5 +21,8 @@ void deleteContact(AddressBook *addressBook);
 void listContacts(AddressBook *addressBook, int sortCriteria);
 void initialize(AddressBook *addressBook);
 void saveContactsToFile(AddressBook *AddressBook);
-
+int find_name(AddressBook *addressBook);
+int find_number(AddressBook *addressBook);
+int find_email(AddressBook *addressBook);
+void print(int i,AddressBook *addressBook);
 #endif

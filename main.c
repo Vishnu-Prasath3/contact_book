@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "contact.h"
 
+
 int main() {
     int choice;
     AddressBook addressBook;
@@ -32,7 +33,7 @@ int main() {
                 deleteContact(&addressBook);
                 break;
             case 5:          
-                listContacts(&addressBook, sortChoice);
+                listContacts(&addressBook, choice);
                 break;
             case 6:
                 printf("Saving and Exiting...\n");
