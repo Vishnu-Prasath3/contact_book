@@ -6,22 +6,17 @@
 #include "populate.h"
 #include "validation.h"
 
-
 void listContacts(AddressBook *addressBook, int sortCriteria)
 {
     // Sort contacts based on the chosen criteria
-    
     int count = addressBook->contactCount;
-    int i=0;
-    while(i<count){
-        
-        printf(" name : %s\n",addressBook->contacts[i].name);
-        printf(" phone : %s\n",addressBook->contacts[i].phone);
-        printf(" email : %s\n",addressBook->contacts[i].email);
+    int i = 0;
+    while (i < count)
+    {
+        print(i,addressBook);
         i++;
         printf("\n");
     }
-
 }
 
 void initialize(AddressBook *addressBook)
@@ -39,12 +34,13 @@ void saveAndExit(AddressBook *addressBook)
     exit(EXIT_SUCCESS);              // Exit the program
 }
 
-void createContact(AddressBook *addressBook){
-    /* Define the logic to create a Contacts */ 
+void createContact(AddressBook *addressBook)
+{
+    /* Define the logic to create a Contacts */
     int count = addressBook->contactCount;
-    name_validation(addressBook,count);
-    phone_validation(addressBook,count);
-    mail_validation(addressBook,count);    
+    name_validation(addressBook, count);
+    phone_validation(addressBook, count);
+    mail_validation(addressBook, count); //check wheather (@) and (.) symbol present in the gmail
     addressBook->contactCount++;
 }
 
@@ -53,43 +49,46 @@ void searchContact(AddressBook *addressBook)
     /* Define the logic for search */
     int choice;
 
-    printf("\n enter you choice \n 1)Name \n 2)phone number\n 3)Mail id \n 4)Exit \n|||||||||||||||\n ");
-    scanf("%d",&choice);
     
+    
+    int ret = 0;
+    while(ret == 0){
+        printf("\n enter you choice \n 1)Name \n 2)phone number\n 3)Mail id \n 4)Exit \n|||||||||||||||\n ");
+       ret = scanf("%d", &choice);
+    }
     char str[100];
+
 
     switch (choice)
     {
-        //find by number
-    case  1:
-        {
-            find_name(addressBook);
-            break;
-        }
-    //find using phone number
+        // find by number
+    case 1:
+    {
+        find_name(addressBook);
+        break;
+    }
+    // find using phone number
     case 2:
     {
         find_number(addressBook);
-        break;   
+        break;
     }
 
-    // check by mail -id
-       case 3:
+        // check by mail -id
+    case 3:
     {
         find_email(addressBook);
         break;
     }
 
-       case 4:
+    case 4:
 
-       break;
+        break;
 
     default:
-
-      printf("Entered value is not in choice");
+        printf("Entered value is not in choice");
         break;
     }
-
 }
 
 void editContact(AddressBook *addressBook)
@@ -102,68 +101,69 @@ void deleteContact(AddressBook *addressBook)
     /* Define the logic for deletecontact */
 }
 
-
-int find_name(AddressBook *addressBook){
+int find_name(AddressBook *addressBook)
+{
 
     char str[100];
     validate_name(str);
 
-    int limit =addressBook->contactCount;
+    int limit = addressBook->contactCount;
     int ret;
-    for(int i = 0; i <limit; i++){
-    
-     ret = strcmp(addressBook->contacts[i].name,str);
- 
-     if(ret == 0)
-        print(i,addressBook);
-    }  
- 
+    for (int i = 0; i < limit; i++)
+    {
+
+        ret = strcmp(addressBook->contacts[i].name, str);
+
+        if (ret == 0)
+            print(i, addressBook);
+    }
 }
 ////////////////////////////////find by number /////////////////////////////////////////
-int find_number(AddressBook *addressBook){
+int find_number(AddressBook *addressBook)
+{
 
     char str[100];
     validate_number(str);
-    
-    int limit =addressBook->contactCount;
+
+    int limit = addressBook->contactCount;
     int ret;
-    for(int i = 0; i <limit; i++){
-    
-     ret = strcmp(addressBook->contacts[i].phone,str);
- 
-     if(ret == 0)
-       print(i,addressBook);
-       return 0;
-    } 
+    for (int i = 0; i < limit; i++)
+    {
+
+        ret = strcmp(addressBook->contacts[i].phone, str);
+
+        if (ret == 0)
+            print(i, addressBook);
+        return 0;
+    }
     {
         printf("\n--------------\n");
         printf("\n|!!!NOT-FOUND|\n");
         printf("\n--------------\n");
-
     }
- 
 }
 
 ////////////////////////////////find by email id//////////////////////////////////////////////////
-int find_email(AddressBook *addressBook){
+int find_email(AddressBook *addressBook)
+{
 
     char str[100];
     mail_check(str);
-    
-    int limit =addressBook->contactCount;
-    int ret;
-    for(int i = 0; i <limit; i++){
-    
-     ret = strcmp(addressBook->contacts[i].email,str);
- 
-     if(ret == 0)
-         print(i,addressBook);
 
-    }  
- 
+    int limit = addressBook->contactCount;
+    int ret;
+    for (int i = 0; i < limit; i++)
+    {
+
+        ret = strcmp(addressBook->contacts[i].email, str);
+
+        if (ret == 0)
+            print(i, addressBook);
+    }
 }
-void print(int i,AddressBook *addressBook){
-    printf("your entered name is %s\n ",addressBook->contacts[i].name);
-    printf("The number is %s\n ",addressBook->contacts[i].phone);
-    printf("The Email id is %s\n ",addressBook->contacts[i].name);   
+void print(int i, AddressBook *addressBook)
+{
+    printf("your entered name is %s\n ", addressBook->contacts[i].name);
+    printf("The number is %s\n ", addressBook->contacts[i].phone);
+    printf("The Email id is %s\n ", addressBook->contacts[i].name);
 }

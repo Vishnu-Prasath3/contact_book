@@ -2,11 +2,6 @@
 2.single command
 3.prompt message
 
-
-
-
-
-
 <!-- validation.c -->
 
 =======>validation take's care it

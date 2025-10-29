@@ -3,133 +3,137 @@
 #include <string.h>
 #include <ctype.h>
 
-void validate_name(char str[]){  //checking 
-    
-    printf("\nEnter the Name\n");
+void validate_name(char str[])
+{ // checking
 
-    scanf(" %[^\n]", str);  
+  printf("\nEnter the Name\n");
 
-   
-    int i = 0;
+  scanf(" %[^\n]", str);
 
-    while(str[i] != '\0')
-    {
-    
-    if((str[i]>='A'&&str[i]<='Z') || (str[i]>='a'&&str[i]<='z') || str[i]==' ');
-    
+  int i = 0;
+
+  while (str[i] != '\0')
+  {
+
+    if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z') || str[i] == ' ')
+      ;
+
     else
     {
-        //if the name conntains someother dumps return  0
-        printf("you have entered Invalild name\n");
-        validate_name(str);
+      // if the name conntains someother dumps return  0
+      printf("you have entered Invalild name\n");
+      validate_name(str);
     }
 
     i++;
-   }
+  }
 
-   return ;
+  return;
 }
 
+void name_validation(AddressBook *addressBook, int count)
+{
 
-void name_validation(AddressBook *addressBook,int count){
-        
-        char str[50];  
+  char str[50];
 
-        validate_name( str); //passing base address of the string
+  validate_name(str); // passing base address of the string
 
-        strcpy(addressBook->contacts[count].name,str); //copy of str to address book
+  strcpy(addressBook->contacts[count].name, str); // copy of str to address book
 
-        printf(" %s ",addressBook->contacts[count].name);
-        
-        //  printf("%s",addressBook->contacts[count].name);
+  printf(" %s ", addressBook->contacts[count].name);
 
-
+  //  printf("%s",addressBook->contacts[count].name);
 }
-
 
 //////////////////////////// check for mail id //////////////////////////////////////////
-   
-  int mail_check(char str[]){ //check
-   
-    printf("\nEnter the Mail Id\n");
-    
-    scanf(" %[^\n]", str);
 
-    char gmail[] = "@gmail.com";
-    
-    char *ret = strstr(str ,gmail);
+int mail_check(char str[])
+{ // check
 
+  printf("\nEnter the Mail Id\n");
 
-    
-     if(!isalpha(str[0])){
-        
-        printf("\nFirst digit should be alphabet");
+  scanf(" %[^\n]", str);
 
-        mail_check(str);
-     }
-   
-    if( ret == NULL){
-        printf("\nInvalid gmail");
-        mail_check(str);
-    }
+  char gmail[] = "@gmail.com";
+
+  int len = strlen(str);
+  for (int i = 0; i <= len; i++)
+  {
+  }
+
+  if (!(str[0] >= 'a' && str[0] <= 'z') || !(str[0] >= 'A' && str[0] <= 'Z'))
+  {
+
+    printf("\nFirst digit should be alphabet");
+
+    mail_check(str);
+  }
+
+  int count, dotpos = -1, pos = 0;
+  for (int i = 0; i < len; i++)
+  { 
+
+  }
   
 }
 
+void mail_validation(AddressBook *addressBook, int count)
+{
 
-void mail_validation(AddressBook *addressBook,int count){
-
-   char str[100];
-   mail_check(str);
-   strcpy(addressBook->contacts[count].email,str);
+  char str[100];
+  mail_check(str);
+  strcpy(addressBook->contacts[count].email, str);
 }
-////////////////////////////////phone_validation(addressBook)////////////////////////////////////////////
+//////////phone_validation(addressBook)//////////
 
-int validate_number(char str[]){   //check
-     
-        int i = 0;
+int validate_number(char str[])
+{ // check
 
-        printf("\n::::::Enter the 10_Digit IND-number::::::\n");
-        
-        scanf(" %[^\n]",str);
-         
-        printf("you entered digit is %s",str);
+  int i = 0;
 
-        if(strlen(str) < 10 || strlen(str) > 10  ){
-   
-        printf("\ninvalid number ::::> Re-Enter\n"); 
+  printf("\n::::::Enter the 10_Digit IND-number::::::\n");
 
-        validate_number(str);
-        }
+  scanf(" %[^\n]", str);
 
- 
-        while (i < strlen(str))
-        {   
+  printf("you entered digit is %s", str);
 
-            if(str[i] >= '0' && str[i] <= '9');
-            // if(!isdigit(str[i]))
-            else{
-                printf("\n--------------------------");
-                printf("\n|     Invalid number      |");
-                printf("\n--------------------------\n");
-                validate_number(str);   
-            }
-            i++;
-        }
-        return 0; 
-}
+  if (strlen(str) < 10 || strlen(str) > 10)
+  {
 
-void phone_validation(AddressBook *addressBook,int count){
+    printf("\ninvalid number ::::> Re-Enter\n");
 
-      char str[50];
+    validate_number(str);
+  }
+
+  while (i < strlen(str))
+  {
+
+    if (str[i] >= '0' && str[i] <= '9')
+      ;
+    // if(!isdigit(str[i]))
+    else
+    {
+      printf("\n--------------------------");
+      printf("\n|     Invalid number      |");
+      printf("\n--------------------------\n");
       validate_number(str);
-    //   
-      printf("%s",str);
-      strcpy(addressBook->contacts[count].phone,str);
+    }
+    i++;
+  }
+  return 0;
+}
 
-    //   checking for printing
-      printf(addressBook->contacts[count].phone);
+void phone_validation(AddressBook *addressBook, int count)
+{
 
-      
+  char str[50];
+  validate_number(str);
+  //
+  printf("%s", str);
+  strcpy(addressBook->contacts[count].phone, str);
+
+  //   checking for printing
+  // printf("%s",addressBook->contacts[count].phone);
 }
 
 // char *string_copy()
