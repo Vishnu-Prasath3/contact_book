@@ -31,6 +31,15 @@ void validate_name(char str[])
   return;
 }
 
+
+
+
+
+
+
+
+
+
 void name_validation(AddressBook *addressBook, int count)
 {
 
@@ -45,35 +54,50 @@ void name_validation(AddressBook *addressBook, int count)
   //  printf("%s",addressBook->contacts[count].name);
 }
 
+
+
+
+
+
+
+
+
 //////////////////////////// check for mail id //////////////////////////////////////////
 
 int mail_check(char str[])
-{ // check
+{ 
 
   printf("\nEnter the Mail Id\n");
 
-  scanf(" %[^\n]", str);
+  getchar();
 
-  char gmail[] = "@gmail.com";
+  scanf("%[^\n]", str);
+  
+  getchar();
 
   int len = strlen(str);
-  for (int i = 0; i <= len; i++)
-  {
-  }
 
-  if (!(str[0] >= 'a' && str[0] <= 'z') || !(str[0] >= 'A' && str[0] <= 'Z'))
-  {
 
+  if ( !(str[0] >= 'a' && str[0] <= 'z') && !(str[0] >= 'A' && str[0] <= 'Z'))
+  {
     printf("\nFirst digit should be alphabet");
-
     mail_check(str);
   }
 
   int count, dotpos = -1, pos = 0;
+  // count is for @ ,dotpos var for cal of dot , pos=of @ greater than .
   for (int i = 0; i < len; i++)
   { 
-
+   if(str[i] == '@')
+     {
+     count++;
+     pos = i;
+     }
   }
+   if(!count){
+    printf("Entered is invalid mail");
+    mail_check( str);
+   } 
   
 }
 
@@ -84,6 +108,16 @@ void mail_validation(AddressBook *addressBook, int count)
   mail_check(str);
   strcpy(addressBook->contacts[count].email, str);
 }
+
+
+
+
+
+
+
+
+
+
 //////////phone_validation(addressBook)//////////
 
 int validate_number(char str[])
@@ -101,17 +135,15 @@ int validate_number(char str[])
   {
 
     printf("\ninvalid number ::::> Re-Enter\n");
-
+    
+    // recursive call
     validate_number(str);
   }
 
   while (i < strlen(str))
   {
 
-    if (str[i] >= '0' && str[i] <= '9')
-      ;
-    // if(!isdigit(str[i]))
-    else
+    if ( !(str[i] >= '0') && !(str[i] <= '9'))
     {
       printf("\n--------------------------");
       printf("\n|     Invalid number      |");
@@ -123,17 +155,28 @@ int validate_number(char str[])
   return 0;
 }
 
+
+
+
+
+
+
+
+
+
+// ||| =============>>>>>>>Phone saving<<<<<<<<========|||
+
 void phone_validation(AddressBook *addressBook, int count)
 {
 
   char str[50];
+  
+  // phone-number-validation function call 
   validate_number(str);
-  //
+
   printf("%s", str);
+  
   strcpy(addressBook->contacts[count].phone, str);
 
-  //   checking for printing
-  // printf("%s",addressBook->contacts[count].phone);
 }
 
-// char *string_copy()

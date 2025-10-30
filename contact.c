@@ -48,13 +48,17 @@ void searchContact(AddressBook *addressBook)
 {
     /* Define the logic for search */
     int choice;
-
     
-    
-    int ret = 0;
-    while(ret == 0){
+    while(1){
         printf("\n enter you choice \n 1)Name \n 2)phone number\n 3)Mail id \n 4)Exit \n|||||||||||||||\n ");
-       ret = scanf("%d", &choice);
+        
+        scanf("%d", &choice);
+        getchar();
+        if((int)choice >= 0 && (int)choice<=9){
+
+        break;
+
+       }
     }
     char str[100];
 
@@ -87,6 +91,7 @@ void searchContact(AddressBook *addressBook)
 
     default:
         printf("Entered value is not in choice");
+        searchContact(addressBook);
         break;
     }
 }
