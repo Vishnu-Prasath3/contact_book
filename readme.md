@@ -53,3 +53,39 @@ str1: Hello beeks!
 str2: Hello beeks!
 str3: Copy successful
 <>======<> Risk of Buffer Overflow (Unsafe Use) <>======<>
+
+<!--  -->
+
+edit contact 
+
+====Ask user choice
+{
+
+by using switch case statment
+
+} 
+
+1.edit by name 
+(validate name and check wheather name is available or not)
+
+2.edit by number
+(validate number and check wheather the number is present or not)
+======if yes edit it
+
+3.edit by email
+(check wheather wheather it is email or not )
+
+(==> after that email is in the structure or not<===)
+
+<!-- Delete contact  -->
+
+traverse the structure by copying one array to another. 
+=================>next to prev<=============== 
+
+
+
+Array 
+
+<!-- cannot delete an array but we can modify the array by the size -->
+In csv file we should have to print the contact count value
+

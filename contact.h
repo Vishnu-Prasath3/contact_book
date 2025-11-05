@@ -21,8 +21,22 @@ void deleteContact(AddressBook *addressBook);
 void listContacts(AddressBook *addressBook, int sortCriteria);
 void initialize(AddressBook *addressBook);
 void saveContactsToFile(AddressBook *AddressBook);
+
 int find_name(AddressBook *addressBook);
 int find_number(AddressBook *addressBook);
 int find_email(AddressBook *addressBook);
+
 void print(int i,AddressBook *addressBook);
+
+int edit_by_name(AddressBook *addressBook);
+int edit_by_number(AddressBook *addressBook);
+int edit_by_email(AddressBook *addressBook);
+
+int string_cmp(char *stringone,char *stringtwo);
+int string_copy(char *desti, char *source);
+
+int delete_by_email(AddressBook *addressBook);
+int delete_by_number(AddressBook *addressBook);
+int delete_by_name(AddressBook *addressBook);
+
 #endif

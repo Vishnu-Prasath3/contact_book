@@ -19,4 +19,7 @@ void populateAddressBook(AddressBook* addressBook)
     for (int i = 0; i < numDummyContacts && addressBook->contactCount < MAX_CONTACTS; ++i) {
         addressBook->contacts[addressBook->contactCount++] = dummyContacts[i];
     }
+    
+
+
 }
