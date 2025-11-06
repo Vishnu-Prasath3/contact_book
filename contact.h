@@ -14,21 +14,22 @@ typedef struct {
     int contactCount;
 } AddressBook;
 
+// Function prototypes
 void createContact(AddressBook *addressBook);
 void searchContact(AddressBook *addressBook);
 void editContact(AddressBook *addressBook);
 void deleteContact(AddressBook *addressBook);
-void listContacts(AddressBook *addressBook, int sortCriteria);
+void listContacts(AddressBook *addressBook);
 void initialize(AddressBook *addressBook);
 void saveContactsToFile(AddressBook *AddressBook);
 
 
-
+// Utility functions
 void print(int i,AddressBook *addressBook);
 
-
+// String comparison and copy functions
 int string_cmp(char *stringone,char *stringtwo);
-int string_copy(char *desti, char *source);
+void string_copy(char *desti, char *source);
 
 
 #endif

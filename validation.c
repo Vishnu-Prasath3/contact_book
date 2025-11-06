@@ -10,14 +10,14 @@ int is_char(char c)
 }
 
 void validate_name(char str[])
-{ 
+{
   // checking
 
   printf("\n----->Enter the 𝐇𝐄┃𝐇𝐈𝐌 or 𝐒𝐇𝐄┃𝐇𝐄𝐑 Name-----<\n");
 
-  getchar();
+  // getchar(); // to clear the buffer
 
-  scanf("%[^\n]", str);
+  scanf(" %[^\n]", str);
 
   int i = 0;
 
@@ -80,32 +80,30 @@ int mail_check(char str[])
   int len = 0;
 
   while (str[len] != '\0')
-    
-  len++;
+
+    len++;
 
   int at = -1, dot = -1;
 
   for (int i = 0; i < len; i++)
   {
-   
+
     if (str[i] == '@')
     {
 
       at = i;
-
     }
     if (str[i] == '.')
     {
 
       dot = i;
-
     }
-    if(str[i] == ' '){
+    if (str[i] == ' ')
+    {
 
       printf("Space is not-allowed in Email");
 
       mail_check(str);
-
     }
   }
 
@@ -148,7 +146,7 @@ void mail_validation(AddressBook *addressBook)
   strcpy(addressBook->contacts[count].email, str);
 }
 
-//phone_validation(addressBook)
+// phone_validation(addressBook)
 
 int validate_number(char str[])
 {
@@ -181,7 +179,8 @@ int validate_number(char str[])
   for (int i = 0; i < 10; i++)
   {
 
-    if ((str[i] >= '0') && (str[i] <= '9'));
+    if ((str[i] >= '0') && (str[i] <= '9'))
+      ;
 
     else
     {

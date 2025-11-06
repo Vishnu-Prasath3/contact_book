@@ -3,9 +3,13 @@
 
 
 int main() {
+
+
     int choice;
-    AddressBook addressBook;
-    initialize(&addressBook); // Initialize the address book
+
+    AddressBook addressBook; //Structure initialization  
+
+    initialize(&addressBook); //initialize function call 
 
     do {
         printf("\nAddress Book Menu:\n");
@@ -17,32 +21,35 @@ int main() {
     	printf("6. Save contacts\n");		
         printf("7. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        // Get user choice
+        scanf("%d", &choice); 
         
         switch (choice) {
-            case 1:
-                createContact(&addressBook);
+            case 1: 
+                createContact(&addressBook); //jump to create contact function
                 break;
             case 2:
-                searchContact(&addressBook);
+                searchContact(&addressBook); //jump to search contact function
                 break;
             case 3:
-                editContact(&addressBook);
+                editContact(&addressBook); //jump to edit contact   function
                 break;
             case 4:
-                deleteContact(&addressBook);
+                deleteContact(&addressBook);  //jump to delete contact  function
                 break;
             case 5:          
-                listContacts(&addressBook, choice);
+                listContacts(&addressBook); //jump to list all contacts function
                 break;
             case 6:
                 printf("Saving and Exiting...\n");
-                saveContactsToFile(&addressBook);
+                saveContactsToFile(&addressBook); // Save contacts to file function call
                 break;
-            default:
-                printf("Invalid choice. Please try again.\n");
+
+                default:
+                // Handle invalid choices
+                printf("Invalid choice. Please try again.\n"); 
         }
-    } while (choice != 7);
+    } while (choice != 7); 
     
-       return 0;
+       return 0; // Exit the program
 }
